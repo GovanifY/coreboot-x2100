@@ -5,7 +5,11 @@ Device (EC)
 	Name (_HID, EisaId ("PNP0C09"))
 	Name (_UID, 0)
 
-	Name (_GPE, 0x4F)  // _GPE: General Purpose Events
+#if CONFIG_BOARD_51NB_X210
+    Name (_GPE, 0x4F)  // _GPE: General Purpose Events
+#else
+    Name (_GPE, 0x50)  // _GPE: General Purpose Events
+#endif
 	Name (_CRS, ResourceTemplate () {
 		IO (Decode16, 0x62, 0x62, 1, 1)
 		IO (Decode16, 0x66, 0x66, 1, 1)
